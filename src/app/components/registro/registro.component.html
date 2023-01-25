@@ -4,41 +4,199 @@
         <div class="nombre">
             <div class="form-group">
                 <label for="nombre1">Primer nombre</label>
-                <input type="text" class="form-control" id="nombre1" name="nombre1" [(ngModel)]="nombre1" formControlName="nombre1">
+                <input type="text" class="form-control" id="nombre4" name="nombre1" [(ngModel)]="nombre1" formControlName="nombre1">
                 <div *ngIf="form.get('nombre1')?.touched && form.get('nombre1')?.errors?.['required']" 
                 class="alert alert-danger">Información Requerida</div>
                 <div *ngIf="form.get('nombre1')?.touched && form.get('nombre1')?.errors?.['minlength']" 
-                class="alert alert-danger">Nombre Invalido ({{form.get('nombre1')?.errors?.['minlength']?.requiredLength}})</div>
-            </div>
-            <div class="form-group">
-                <label for="nombre2">Segundo Nombre</label>
-                <input type="text" class="form-control" id="nombre2" name="nombre2" [(ngModel)]="nombre2" formControlName="nombre2">
-            </div>
-            <div class="form-group">
-                <label for="apellido1">Primer Apellido</label>
-                <input type="text" class="form-control" id="apellido1" name="apellido1" [(ngModel)]="apellido1"formControlName="apellido1">
-            </div>
-            <div class="form-group">
-                <label for="apellido2">Segundo Apellido</label>
-                <input type="text" class="form-control" id="apellido2" name="apellido2" [(ngModel)]="apellido2 "formControlName="apellido2">
+                class="alert alert-danger">Nombre Invalido</div>
             </div>
         </div>
-        <div class="form-group">
-            <label for="cc">Cedula</label>
-            <input type="number" class="form-control" id="cc" name="cc" [(ngModel)]="persona.cc" formControlName="cc">
+
+
+
+<section class="vh-100">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-12 col-xl-11">
+          <div class="card text-black">
+            <div class="card-body">
+              <div class="row justify-content-center">
+                <div class="col-md-15  col-xl-15">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                      class="img-fluid" alt="Sample image">
+
+                    
+                  <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Registro</p>
+  
+                  <form class="mx-1 mx-md-4 content-form">
+  
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <input type="text" id="identificacion" class="form-control" />
+                        <label class="form-label" for="identificacion">Identificación</label>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <input type="text" id="nombres" class="form-control" />
+                        <label class="form-label" for="nombres">Nombres</label>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <input type="text" id="apellidos" class="form-control" />
+                        <label class="form-label" for="apellidos">Apellidos</label>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <input type="text" id="poblacion" class="form-control" />
+                        <label class="form-label" for="poblacion">Población</label>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <input type="text" id="region" class="form-control" />
+                        <label class="form-label" for="region">Region</label>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <input type="text" id="direccion" class="form-control" />
+                        <label class="form-label" for="direccion">Dirección</label>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <input type="text" id="telefono" class="form-control" />
+                        <label class="form-label" for="telefono">Telefono</label>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <input type="text" id="celular" class="form-control" />
+                        <label class="form-label" for="celular">Celular</label>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-0">
+                            <input type="email" id="correo" class="form-control" />
+                            <label class="form-label" for="correo">Email</label>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <input type="text" id="sexo" class="form-control" />
+                        <label class="form-label" for="sexo">Sexo</label>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <input type="text" id="fecha_nacimiento" class="form-control" />
+                        <label class="form-label" for="fecha_nacimiento">Fecha de nacimiento</label>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <input type="text" id="Organizacion_ventas" class="form-control" />
+                        <label class="form-label" for="Organizacion_ventas">Organización de Ventas</label>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <input type="text" id="canal_distribucion" class="form-control" />
+                        <label class="form-label" for="canal_distribucion">Canal de Distribución</label>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <input type="text" id="sector" class="form-control" />
+                        <label class="form-label" for="sector">Sector</label>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <input type="text" id="grupo_clientes" class="form-control" />
+                        <label class="form-label" for="grupo_clientes">Grupo de Clientes</label>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <input type="text" id="zona_ventas" class="form-control" />
+                        <label class="form-label" for="zona_ventas">Zona de Ventas</label>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <input type="text" id="grupo_vendedores" class="form-control" />
+                        <label class="form-label" for="grupo_vendedores">Grupo de Vendedores</label>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <input type="text" id="oficina_ventas" class="form-control" />
+                        <label class="form-label" for="oficina_ventas">Oficina de Ventas</label>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <input type="text" id="grupo_clientes1" class="form-control" />
+                        <label class="form-label" for="grupo_clientes1">Grupo de Clientes1</label>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <input type="text" id="grupo_clientes3" class="form-control" />
+                        <label class="form-label" for="grupo_clientes3">Grupo de Clientes3</label>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <input type="text" id="cupo" class="form-control" />
+                        <label class="form-label" for="cupo">Cupo</label>
+                      </div>
+                    </div>
+
+                    <div class="form-check d-flex justify-content-center mb-5">
+                      <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
+                      <label class="form-check-label" for="form2Example3">
+                        I agree all statements in <a href="#!">Terms of service</a>
+                      </label>
+                    </div>
+  
+                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                      <button type="button" class="btn btn-primary btn-lg">Register</button>
+                    </div>
+  
+                  </form>
+  
+                </div>
+                
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-            <label for="correo">Correo electronico</label>
-            <input type="email" class="form-control" id="email" name="email" [(ngModel)]="persona.correo" formControlName="email">
-        </div>
-        <div class="form-group">
-            <label for="cel">Celular</label>
-            <input type="number" class="form-control" id="cel" name="cel" [(ngModel)]="persona.celular" formControlName="celular">
-        </div>
-        <div class="form-group">
-            <label for="direccion">Direccion</label>
-            <input type="text" class="form-control" id="direccion" name="direccion" [(ngModel)]="persona.direccion" formControlName="direccion">
-        </div>
-        <button class="btn btn-success" [disabled]="form.invalid">Guardar</button>
-    </form>
-</div>
+      </div>
+    </div>
+  </section>    
