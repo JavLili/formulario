@@ -16,6 +16,7 @@ export class RegistroComponent implements OnInit{
   nombre2:string="";
   apellido1:string="";
   apellido2: string="";
+  fullName: string="";
   persona : Persona = new Persona();
   constructor(private personaService : PersonaService, private fb: FormBuilder){
     this.form 
@@ -23,24 +24,25 @@ export class RegistroComponent implements OnInit{
   ngOnInit(): void {
     this.form = this.initForm();
   }
-  onSubmit(){
-    console.log(this.persona);  
 
-  }
   enviar(){
     this.personaService.registrarCliente(this.persona).subscribe(dato=>{
       console.log(dato);      
     },error => console.log(error));
   }
-  unir(){
+  
+  concatenar(){
     if (this.nombre2==="") {
-      this.persona.nombre=this.nombre1+" "+this.apellido1+" "+this.apellido2
-    }else{
-      this.persona.nombre=this.nombre1+" "+this.nombre2+" "+this.apellido1+" "+this.apellido2
+      this.fullName=this.nombre1+" "+this.apellido1+" "+this.apellido2
+      this.persona.nombres=this.nombre1
+      this.persona.apellidos=this.apellido1+" "+this.apellido2
+    } else{
+      this.fullName=this.nombre1+" "+this.nombre2+" "+this.apellido1+" "+this.apellido2
+      this.persona.nombres=this.nombre1+" "+this.nombre2
+      this.persona.apellidos=this.apellido1+" "+this.apellido2
     }
-    this.onSubmit()
   }
-
+  
   initForm(): FormGroup{
     return this.fb.group({
       nombre1:['', [Validators.required, Validators.minLength(3)]],

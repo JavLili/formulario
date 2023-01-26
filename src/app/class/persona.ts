@@ -17,7 +17,7 @@ export class Persona {
     zona_ventas:string;
     grupo_vendedores:string;
     oficina_ventas:string;
-    grupo_cliente1:string;
-    grupo_cliente3:string;
+    grupo_clientes1:string;
+    grupo_clientes3:string;
     cupo:string;
 }

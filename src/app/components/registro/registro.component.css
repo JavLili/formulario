@@ -1,7 +1,11 @@
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
 .card {
     border-radius: 25px;
 }
-
 .form-outline {
     min-height: auto;
     padding: 0.32rem 0.75rem;
@@ -9,25 +13,50 @@
     background: transparent;
     transition: all 0.2s linear;
 }
-
 @media (min-width: 410) {
     .content-form {
         max-width: 100%;
     }
 }
-
-.form-outline .form-control .form-label {
-    position: absolute;
-    top: 0;
-    max-width: 90%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    left: 1.75rem;
-    padding-top: 0.37rem;
-    pointer-events: none;
-    transform-origin: 0 0;
-    transition: all .2s ease-out;
-    color: rgba(0, 0, 0, .6);
-    margin-bottom: 0;
+.formulario__input:focus {
+    outline: 1px solid rgba(0,0,0,0.7);
 }
+.formulario__input:focus + .formulario__label{
+    margin-top: -70px;
+    color: black;
+    font-size: 1.2rem;
+}
+.formulario__label {
+    padding-left: 15px;
+    position: absolute;
+    margin-top: -32px;
+    color: rgba(0, 0, 0, 0.5);
+    transition: all 0.2s;
+}
+.label__full{
+    margin-top: -60px;
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.5);
+    padding-left: 15px;
+    position: absolute;
+}
+.full{
+    color: rgba(0, 0, 0, 0.5);
+}
+.border{
+    box-shadow: 0 1.5px 12px 2px rgb(0 0 0 / 20%);
+}
+.pad-rig{
+    padding-right: 0;
+}
+.pad-lef{
+    padding-left: 0;
+}
+/*
+.form-outline .form-control {
+    min-height: auto;
+    padding: 0.32rem 0.75rem;
+    border: 0;
+    background: transparent;
+    transition: all .2s linear;
+}*/
