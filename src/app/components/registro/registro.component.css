@@ -3,6 +3,10 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none; 
   margin: 0; 
 }
+:root{
+    --color-lili: rgb(228 20 126)
+}
+
 .card {
     border-radius: 25px;
 }
@@ -18,12 +22,16 @@ input[type=number]::-webkit-outer-spin-button {
         max-width: 100%;
     }
 }
+.mont{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(226, 2, 140);
+}
 .formulario__input:focus {
-    outline: 1px solid rgba(0,0,0,0.7);
+    outline: 1px solid var(--color-lili);
 }
 .formulario__input:focus + .formulario__label{
     margin-top: -70px;
-    color: black;
+    color: rgb(226, 2, 140);
     font-size: 1.2rem;
 }
 .formulario__label {
@@ -36,12 +44,12 @@ input[type=number]::-webkit-outer-spin-button {
 .label__full{
     margin-top: -60px;
     font-size: 1rem;
-    color: rgba(0, 0, 0, 0.5);
+    color: rgba(226, 2, 140, 0.5);
     padding-left: 15px;
     position: absolute;
 }
 .full{
-    color: rgba(0, 0, 0, 0.5);
+    accent-color: rgba(226, 2, 140);
 }
 .border{
     box-shadow: 0 1.5px 12px 2px rgb(0 0 0 / 20%);
@@ -52,11 +60,7 @@ input[type=number]::-webkit-outer-spin-button {
 .pad-lef{
     padding-left: 0;
 }
-/*
-.form-outline .form-control {
-    min-height: auto;
-    padding: 0.32rem 0.75rem;
-    border: 0;
-    background: transparent;
-    transition: all .2s linear;
-}*/
+.img{
+    width: 8rem;
+    height: 10rem;
+}
