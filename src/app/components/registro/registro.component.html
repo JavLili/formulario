@@ -1,23 +1,7 @@
-<div class="col-md-6 offset-md-3">
-    <h3 class="text-center">Registro de cliente</h3>
-    <form [formGroup]="form">
-        <div class="nombre">
-            <div class="form-group">
-                <label for="nombre1">Primer nombre</label>
-                <input type="text" class="form-control" id="nombre4" name="nombre1" [(ngModel)]="nombre1" formControlName="nombre1">
-                <div *ngIf="form.get('nombre1')?.touched && form.get('nombre1')?.errors?.['required']" 
-                class="alert alert-danger">Información Requerida</div>
-                <div *ngIf="form.get('nombre1')?.touched && form.get('nombre1')?.errors?.['minlength']" 
-                class="alert alert-danger">Nombre Invalido</div>
-            </div>
-        </div>
-
-
-
 <section class="vh-100">
     <div class="container h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-lg-12 col-xl-11">
+        <div class="col-lg-12 col-xl-7">
           <div class="card text-black border">
             <div class="card-body">
               <div class="row justify-content-center">
@@ -28,112 +12,110 @@
                     
                   <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Registro</p>
   
-                  <form class="mx-1 mx-md-4 content-form">
+                  <form class="mx-1 mx-md-4 content-form" [formGroup]="register" (ngSubmit)="onSubmit()" novalidate>
                       <div class="d-flex flex-row align-items-center mb-4">
                           <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0">
-                              <input type="number" id="identificacion" name="identificacion" class="form-control formulario__input" [(ngModel)]="persona.identificacion"/>
-                              <label *ngIf="!persona.identificacion" class="form-label formulario__label" for="identificacion">Identificación</label>
-                              <label *ngIf="persona.identificacion" class="form-label label__full" for="identificacion">Identificación</label>
-                              
+                              <input formControlName="identificacion" [ngClass]="{'is-invalid': submitted && register.controls.identificacion.errors}" type="number" class="form-control formulario__input"/>
+                              <label *ngIf="!register.controls.identificacion.value" class="form-label formulario__label" for="identificacion">Identificación</label>
+                              <label *ngIf="register.controls.identificacion.value" class="form-label label__full" for="identificacion">Identificación</label>
                             </div>
-                        </div>
-                        
-                        <div class="row">
-    
+                        </div>                      
+                        <div class="row">    
                             <div class="d-flex flex-row align-items-center mb-4 col-6 pad-rig">
                               <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                               <div class="form-outline flex-fill mb-0 pad-rig">
-                                <input type="text" id="nombre1" class="form-control formulario__input" [(ngModel)]="nombre1" name="nombre1" (keyup)="concatenar()"/>
-                                <label *ngIf="!nombre1" class="form-label formulario__label" for="nombre1">Primer Nombre *</label>
-                                <label *ngIf="nombre1" class="form-label label__full" for="nombre1">Primer Nombre *</label>
+                                <input formControlName="nombre1" [ngClass]="{'is-invalid': submitted && register.controls.nombre1.errors}" type="text" id="nombre1" class="form-control formulario__input" (keyup)="concatenar()" />
+                                <label *ngIf="!register.controls.nombre1.value" class="form-label formulario__label" for="nombre1">Primer Nombre *</label>
+                                <label *ngIf="register.controls.nombre1.value" class="form-label label__full" for="nombre1">Primer Nombre *</label>
+                              </div>
+                            </div>
+
+                            <div class="d-flex flex-row align-items-center mb-4 col-6 pad-lef ">
+                              <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                              <div class="form-outline flex-fill mb-0 pad-lef">
+                                <input formControlName="nombre2" [ngClass]="{'is-invalid': submitted && register.controls.nombre2.errors}" type="text" id="nombre2" class="form-control formulario__input" (keyup)="concatenar()"/>
+                                <label *ngIf="!register.controls.nombre2.value" class="form-label formulario__label" for="nombre2">Segundo Nombre</label>
+                                <label *ngIf="register.controls.nombre2.value" class="form-label label__full" for="nombre2">Segundo Nombre</label>
+                              </div>
+                            </div>
+
+                            <div class="d-flex flex-row align-items-center mb-4 col-6 pad-rig">
+                              <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                              <div class="form-outline flex-fill mb-0 pad-rig">
+                                <input formControlName="apellido1" [ngClass]="{'is-invalid': submitted && register.controls.apellido1.errors}" type="text" id="apellido1" class="form-control formulario__input" (keyup)="concatenar()"/>
+                                <label *ngIf="!register.controls.apellido1.value" class="form-label formulario__label" for="apellido1">Primer Apellido *</label>
+                                <label *ngIf="register.controls.apellido1.value" class="form-label label__full" for="apellido1">Primer Apellido *</label>
                               </div>
                             </div>
 
                             <div class="d-flex flex-row align-items-center mb-4 col-6 pad-lef">
                               <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                               <div class="form-outline flex-fill mb-0 pad-lef">
-                                <input type="text" id="nombre2" class="form-control formulario__input" [(ngModel)]="nombre2" name="nombre2" (keyup)="concatenar()"/>
-                                <label *ngIf="!nombre2" class="form-label formulario__label" for="nombre2">Segundo Nombre</label>
-                                <label *ngIf="nombre2" class="form-label label__full" for="nombre2">Segundo Nombre</label>
-                              </div>
-                            </div>
-
-                            <div class="d-flex flex-row align-items-center mb-4 col-6 pad-rig">
-                              <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                              <div class="form-outline flex-fill mb-0 pad-rig">
-                                <input type="text" id="apellido1" class="form-control formulario__input" [(ngModel)]="apellido1" name="apellido1" (keyup)="concatenar()"/>
-                                <label *ngIf="!apellido1" class="form-label formulario__label" for="apellido1">Primer Apellido *</label>
-                                <label *ngIf="apellido1" class="form-label label__full" for="apellido1">Primer Apellido *</label>
-                              </div>
-                            </div>
-
-                            <div class="d-flex flex-row align-items-center mb-4 col-6 pad-lef">
-                              <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                              <div class="form-outline flex-fill mb-0 pad-lef">
-                                <input type="text" id="apellido2" class="form-control formulario__input" [(ngModel)]="apellido2" name="apellido2" (keyup)="concatenar()"/>
-                                <label *ngIf="!apellido2" class="form-label formulario__label" for="apellido2">Segundo Apellido</label>
-                                <label *ngIf="apellido2" class="form-label label__full" for="apellido2">Segundo Apellido</label>
+                                <input formControlName="apellido2" [ngClass]="{'is-invalid': submitted && register.controls.apellido2.errors}" type="text" id="apellido2" class="form-control formulario__input" (keyup)="concatenar()"/>
+                                <label *ngIf="!register.controls.apellido2.value" class="form-label formulario__label" for="apellido2">Segundo Apellido</label>
+                                <label *ngIf="register.controls.apellido2.value" class="form-label label__full" for="apellido2">Segundo Apellido</label>
                               </div>
                         </div>
                     
                     </div>
+                        
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
                         <input type="text" id="nombres" class="form-control formulario__input" disabled [value]="fullName"/>
-                        <label *ngIf="nombre1==='' && apellido1===''"  class="form-label formulario__label" for="nombres">Nombre Completo</label>
-                        <label *ngIf="nombre1!=='' || apellido1!==''"  class="form-label label__full" for="nombres">Nombre Completo</label>
+                        <label *ngIf="register.controls.nombre1.value==='' && register.controls.apellido1.value===''"  class="form-label formulario__label" for="nombres">Nombre Completo</label>
+                        <label *ngIf="register.controls.nombre1.value!=='' || register.controls.apellido1.value!==''"  class="form-label label__full" for="nombres">Nombre Completo</label>
                       </div>
                     </div>                    
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
-                        <input type="text" id="poblacion" class="form-control formulario__input" [(ngModel)]="persona.poblacion" name="poblacion"/>
-                        <label *ngIf="!persona.poblacion" class="form-label formulario__label" for="poblacion">Población</label>
-                        <label *ngIf="persona.poblacion" class="form-label label__full" for="poblacion">Población</label>
+                        <input type="text" id="poblacion" class="form-control formulario__input" formControlName="poblacion" [ngClass]="{'is-invalid': submitted && register.controls.poblacion.errors}"/>
+                        <label *ngIf="!register.controls.poblacion.value" class="form-label formulario__label" for="poblacion">Población</label>
+                        <label *ngIf="register.controls.poblacion.value" class="form-label label__full" for="poblacion">Población</label>
                       </div>
                     </div>
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
-                        <input type="text" id="region" class="form-control formulario__input" [(ngModel)]="persona.region" name="region"/>
-                        <label *ngIf="!persona.region" class="form-label formulario__label" for="region">Region</label>
-                        <label *ngIf="persona.region" class="form-label label__full" for="region">Region</label>
+                        <input type="text" id="region" class="form-control formulario__input" formControlName="region" [ngClass]="{'is-invalid': submitted && register.controls.region.errors}"/>
+                        <label *ngIf="!register.controls.region.value" class="form-label formulario__label" for="region">Region</label>
+                        <label *ngIf="register.controls.region.value" class="form-label label__full" for="region">Region</label>
                       </div>
                     </div>
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
-                        <input type="text" id="direccion" class="form-control formulario__input" [(ngModel)]="persona.direccion" name="direccion"/>
-                        <label *ngIf="!persona.direccion" class="form-label formulario__label" for="direccion">Dirección</label>
-                        <label *ngIf="persona.direccion" class="form-label label__full" for="direccion">Dirección</label>
+                        <input type="text" id="direccion" class="form-control formulario__input" formControlName="direccion" [ngClass]="{'is-invalid': submitted && register.controls.direccion.errors}"/>
+                        <label *ngIf="!register.controls.direccion.value" class="form-label formulario__label" for="direccion">Dirección</label>
+                        <label *ngIf="register.controls.direccion.value" class="form-label label__full" for="direccion">Dirección</label>
                       </div>
                     </div>
                     <div class="row">
                         <div class="d-flex flex-row align-items-center mb-4 col-6 pad-rig">
                           <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0 pad-rig" >
-                            <input type="text" id="telefono" class="form-control formulario__input" [(ngModel)]="persona.telefono" name="telefono"/>
-                            <label *ngIf="!persona.telefono" class="form-label formulario__label" for="telefono">Telefono</label>
-                            <label *ngIf="persona.telefono" class="form-label label__full" for="telefono">Telefono</label>
+                            <input type="number" id="telefono" class="form-control formulario__input" formControlName="telefono" [ngClass]="{'is-invalid': submitted && register.controls.telefono.errors}"/>
+                            <label *ngIf="!register.controls.telefono.value" class="form-label formulario__label" for="telefono">Telefono</label>
+                            <label *ngIf="register.controls.telefono.value" class="form-label label__full" for="telefono">Telefono</label>
                           </div>
                         </div>
                         <div class="d-flex flex-row align-items-center mb-4 col-6 pad-lef">
                           <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0 pad-lef">
-                            <input type="text" id="celular" class="form-control formulario__input" [(ngModel)]="persona.celular" name="celular"/>
-                            <label *ngIf="!persona.celular" class="form-label formulario__label" for="celular">Celular</label>
-                            <label *ngIf="persona.celular" class="form-label label__full" for="celular">Celular</label>
+                            <input type="number" id="celular" class="form-control formulario__input" formControlName="celular" [ngClass]="{'is-invalid': submitted && register.controls.celular.errors}"/>
+                            <label *ngIf="!register.controls.celular.value" class="form-label formulario__label" for="celular">Celular</label>
+                            <label *ngIf="register.controls.celular.value" class="form-label label__full" for="celular">Celular</label>
                           </div>
                         </div>
                     </div>
                     <div class="d-flex flex-row align-items-center mb-4">
                         <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                         <div class="form-outline flex-fill mb-0">
-                            <input type="email" id="correo" class="form-control formulario__input" [(ngModel)]="persona.email" name="email"/>
-                            <label *ngIf="!persona.email" class="form-label formulario__label" for="correo">Email</label>
-                            <label *ngIf="persona.email" class="form-label label__full" for="correo">Email</label>
+                            <input type="email" id="email" class="form-control formulario__input" formControlName="email" [ngClass]="{'is-invalid': submitted && register.controls.email.errors}"/>
+                            <label *ngIf="!register.controls.email.value" class="form-label formulario__label" for="email">Email</label>
+                            <label *ngIf="register.controls.email.value" class="form-label label__full" for="email">Email</label>
                         </div>
                     </div>
 
@@ -143,11 +125,11 @@
                             <label class="form-check-label" for="inlineRadio1">Sexo: </label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                            <input class="form-check-input" type="radio" formControlName="inlineRadioOptions" [ngClass]="{'is-invalid': submitted && register.controls.inlineRadioOptions.errors}" id="inlineRadio1" value="option1">
                             <label class="form-check-label" for="inlineRadio1">Masculino</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                            <input class="form-check-input" type="radio" formControlName="inlineRadioOptions" [ngClass]="{'is-invalid': submitted && register.controls.inlineRadioOptions.errors}" id="inlineRadio2" value="option2">
                             <label class="form-check-label" for="inlineRadio2">Femenino</label>
                         </div>
                     </div>
@@ -155,88 +137,88 @@
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
-                        <input type="date" id="fecha_nacimiento" class="form-control formulario__input" [(ngModel)]="persona.fecha_nacimiento" name="fecha_nacimiento"/>
+                        <input type="date" id="fecha_nacimiento" class="form-control formulario__input" formControlName="fecha_nacimiento" [ngClass]="{'is-invalid': submitted && register.controls.fecha_nacimiento.errors}"/>
                         <label  class="form-label formulario__label label__full" for="fecha_nacimiento">Fecha de nacimiento</label>
                       </div>
                     </div>
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
-                        <input type="text" id="organizacion_ventas" class="form-control formulario__input" [(ngModel)]="persona.organizacion_ventas" name="organizacion_ventas"/>
-                        <label *ngIf="!persona.organizacion_ventas" class="form-label formulario__label" for="organizacion_ventas">Organización de Ventas</label>
-                        <label *ngIf="persona.organizacion_ventas" class="form-label label__full" for="organizacion_ventas">Organización de Ventas</label>
+                        <input type="text" id="organizacion_ventas" class="form-control formulario__input" formControlName="organizacion_ventas" [ngClass]="{'is-invalid': submitted && register.controls.organizacion_ventas.errors}"/>
+                        <label *ngIf="!register.controls.organizacion_ventas.value" class="form-label formulario__label" for="organizacion_ventas">Organización de Ventas</label>
+                        <label *ngIf="register.controls.organizacion_ventas.value" class="form-label label__full" for="organizacion_ventas">Organización de Ventas</label>
                       </div>
                     </div>
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
-                        <input type="text" id="canal_distribucion" class="form-control formulario__input" [(ngModel)]="persona.canal_distribucion" name="canal_distribucion"/>
-                        <label *ngIf="!persona.canal_distribucion" class="form-label formulario__label" for="canal_distribucion">Canal de Distribución</label>
-                        <label *ngIf="persona.canal_distribucion" class="form-label label__full" for="canal_distribucion">Canal de Distribución</label>
+                        <input type="text" id="canal_distribucion" class="form-control formulario__input" formControlName="canal_distribucion" [ngClass]="{'is-invalid': submitted && register.controls.canal_distribucion.errors}"/>
+                        <label *ngIf="!register.controls.canal_distribucion.value" class="form-label formulario__label" for="canal_distribucion">Canal de Distribución</label>
+                        <label *ngIf="register.controls.canal_distribucion.value" class="form-label label__full" for="canal_distribucion">Canal de Distribución</label>
                       </div>
                     </div>
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
-                        <input type="text" id="sector" class="form-control formulario__input" [(ngModel)]="persona.sector" name="sector"/>
-                        <label *ngIf="!persona.sector" class="form-label formulario__label" for="sector">Sector</label>
-                        <label *ngIf="persona.sector" class="form-label label__full" for="sector">Sector</label>
+                        <input type="text" id="sector" class="form-control formulario__input" formControlName="sector" [ngClass]="{'is-invalid': submitted && register.controls.sector.errors}"/>
+                        <label *ngIf="!register.controls.sector.value" class="form-label formulario__label" for="sector">Sector</label>
+                        <label *ngIf="register.controls.sector.value" class="form-label label__full" for="sector">Sector</label>
                       </div>
                     </div>
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
-                        <input type="text" id="grupo_clientes" class="form-control formulario__input" [(ngModel)]="persona.grupo_clientes" name="grupo_clientes"/>
-                        <label *ngIf="!persona.grupo_clientes" class="form-label formulario__label" for="grupo_clientes">Grupo de Clientes</label>
-                        <label *ngIf="persona.grupo_clientes" class="form-label label__full" for="grupo_clientes">Grupo de Clientes</label>
+                        <input type="text" id="grupo_clientes" class="form-control formulario__input" formControlName="grupo_clientes" [ngClass]="{'is-invalid': submitted && register.controls.grupo_clientes.errors}"/>
+                        <label *ngIf="!register.controls.grupo_clientes.value" class="form-label formulario__label" for="grupo_clientes">Grupo de Clientes</label>
+                        <label *ngIf="register.controls.grupo_clientes.value" class="form-label label__full" for="grupo_clientes">Grupo de Clientes</label>
                       </div>
                     </div>
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
-                        <input type="text" id="zona_ventas" class="form-control formulario__input" [(ngModel)]="persona.zona_ventas" name="zona_ventas"/>
-                        <label *ngIf="!persona.zona_ventas" class="form-label formulario__label" for="zona_ventas">Zona de Ventas</label>
-                        <label *ngIf="persona.zona_ventas" class="form-label label__full" for="zona_ventas">Zona de Ventas</label>
+                        <input type="text" id="zona_ventas" class="form-control formulario__input" formControlName="zona_ventas" [ngClass]="{'is-invalid': submitted && register.controls.zona_ventas.errors}"/>
+                        <label *ngIf="!register.controls.zona_ventas.value" class="form-label formulario__label" for="zona_ventas">Zona de Ventas</label>
+                        <label *ngIf="register.controls.zona_ventas.value" class="form-label label__full" for="zona_ventas">Zona de Ventas</label>
                       </div>
                     </div>
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
-                        <input type="text" id="grupo_vendedores" class="form-control formulario__input" [(ngModel)]="persona.grupo_vendedores" name="grupo_vendedores"/>
-                        <label *ngIf="!persona.grupo_vendedores" class="form-label formulario__label" for="grupo_vendedores">Grupo de Vendedores</label>
-                        <label *ngIf="persona.grupo_vendedores" class="form-label label__full" for="grupo_vendedores">Grupo de Vendedores</label>
+                        <input type="text" id="grupo_vendedores" class="form-control formulario__input" formControlName="grupo_vendedores" [ngClass]="{'is-invalid': submitted && register.controls.grupo_vendedores.errors}"/>
+                        <label *ngIf="!register.controls.grupo_vendedores.value" class="form-label formulario__label" for="grupo_vendedores">Grupo de Vendedores</label>
+                        <label *ngIf="register.controls.grupo_vendedores.value" class="form-label label__full" for="grupo_vendedores">Grupo de Vendedores</label>
                       </div>
                     </div>
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
-                        <input type="text" id="oficina_ventas" class="form-control formulario__input" [(ngModel)]="persona.oficina_ventas" name="oficina_ventas"/>
-                        <label *ngIf="!persona.oficina_ventas" class="form-label formulario__label" for="oficina_ventas">Oficina de Ventas</label>
-                        <label *ngIf="persona.oficina_ventas" class="form-label label__full" for="oficina_ventas">Oficina de Ventas</label>
+                        <input type="text" id="oficina_ventas" class="form-control formulario__input" formControlName="oficina_ventas" [ngClass]="{'is-invalid': submitted && register.controls.oficina_ventas.errors}"/>
+                        <label *ngIf="!register.controls.oficina_ventas.value" class="form-label formulario__label" for="oficina_ventas">Oficina de Ventas</label>
+                        <label *ngIf="register.controls.oficina_ventas.value" class="form-label label__full" for="oficina_ventas">Oficina de Ventas</label>
                       </div>
                     </div>
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
-                        <input type="text" id="grupo_clientes1" class="form-control formulario__input" [(ngModel)]="persona.grupo_clientes1" name="grupo_clientes1"/>
-                        <label *ngIf="!persona.grupo_clientes1" class="form-label formulario__label" for="grupo_clientes1">Grupo de Clientes1</label>
-                        <label *ngIf="persona.grupo_clientes1" class="form-label label__full" for="grupo_clientes1">Grupo de Clientes1</label>
+                        <input type="text" id="grupo_clientes1" class="form-control formulario__input" formControlName="grupo_clientes1" [ngClass]="{'is-invalid': submitted && register.controls.grupo_clientes1.errors}"/>
+                        <label *ngIf="!register.controls.grupo_clientes1.value" class="form-label formulario__label" for="grupo_clientes1">Grupo de Clientes1</label>
+                        <label *ngIf="register.controls.grupo_clientes1.value" class="form-label label__full" for="grupo_clientes1">Grupo de Clientes1</label>
                       </div>
                     </div>
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
-                        <input type="text" id="grupo_clientes3" class="form-control formulario__input" [(ngModel)]="persona.grupo_clientes3" name="grupo_clientes3"/>
-                        <label *ngIf="!persona.grupo_clientes3" class="form-label formulario__label" for="grupo_clientes3">Grupo de Clientes3</label>
-                        <label *ngIf="persona.grupo_clientes3" class="form-label label__full" for="grupo_clientes3">Grupo de Clientes3</label>
+                        <input type="text" id="grupo_clientes3" class="form-control formulario__input" formControlName="grupo_clientes3" [ngClass]="{'is-invalid': submitted && register.controls.grupo_clientes3.errors}"/>
+                        <label *ngIf="!register.controls.grupo_clientes3.value" class="form-label formulario__label" for="grupo_clientes3">Grupo de Clientes3</label>
+                        <label *ngIf="register.controls.grupo_clientes3.value" class="form-label label__full" for="grupo_clientes3">Grupo de Clientes3</label>
                       </div>
                     </div>
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
-                        <input type="text" id="cupo" class="form-control formulario__input" [(ngModel)]="persona.cupo" name="cupo"/>
-                        <label *ngIf="!persona.cupo" class="form-label formulario__label" for="cupo">Cupo</label>
-                        <label *ngIf="persona.cupo" class="form-label label__full" for="cupo">Cupo</label>
+                        <input type="text" id="cupo" class="form-control formulario__input" formControlName="cupo" [ngClass]="{'is-invalid': submitted && register.controls.cupo.errors}"/>
+                        <label *ngIf="!register.controls.cupo.value" class="form-label formulario__label" for="cupo">Cupo</label>
+                        <label *ngIf="register.controls.cupo.value" class="form-label label__full" for="cupo">Cupo</label>
                       </div>
                     </div>
   
@@ -248,11 +230,11 @@
                       </label>
                     </div>
   
-                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                      <button type="button" class="btn btn-primary btn-lg">Register</button>
-                    </div>
-  
-                  </form>
+                  
+                  <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-" >
+                    <button type="submit" class="btn btn-primary btn-lg" >Register</button>
+                  </div>
+                </form>
   
                 </div>
                 
