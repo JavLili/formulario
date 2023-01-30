@@ -1,17 +1,13 @@
 <section class="vh-100">
     <div class="container h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-lg-12 col-xl-7">
+        <div class="col-lg-12 col-xl-6">
           <div class="card text-black border">
             <div class="card-body">
               <div class="row justify-content-center">
                 <div class="col-md-15  col-xl-15">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
-                      class="img-fluid" alt="Sample image">
-
-                    
-                  <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4 mont">Registrate</p>
-                      
+                    <img src="../../assets/images/electronico.gif" class="img-fluid borde" alt="Sample image">                    
+                  <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4 mont">Registrate</p>                      
                   <form class="mx-1 mx-md-4 content-form" [formGroup]="register" (ngSubmit)="onSubmit()" novalidate>
                       <div class="d-flex flex-row align-items-center mb-4">
                           <i class="fas fa-user fa-lg me-3 fa-fw"></i>
@@ -137,7 +133,7 @@
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
-                        <input type="date" id="fecha_nacimiento" class="form-control formulario__input" formControlName="fecha_nacimiento" [ngClass]="{'is-invalid': submitted && register.controls.fecha_nacimiento.errors}"/>
+                        <input type="date" id="fecha_nacimiento" class="form-control formulario__input fecha" formControlName="fecha_nacimiento" [ngClass]="{'is-invalid': submitted && register.controls.fecha_nacimiento.errors}"/>
                         <label  class="form-label formulario__label label__full" for="fecha_nacimiento">Fecha de nacimiento</label>
                       </div>
                     </div>
@@ -225,15 +221,11 @@
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-" >
                     <button type="submit" class="btn btn-primary btn-lg" >Register</button>
                   </div>
-                </form>
-  
-                </div>
-                
+                </form>  
+                </div>                
               </div>
             </div>
           </div>
-          <img src="https://lilipinkco.vtexassets.com/assets/vtex.file…25bd018bf___a9ae23c9009f1d4ba6968448987f1c6a.webp" 
-          alt="Gana desde 20% conviértete en Socia Digital y alivia tu bolsillo" class="img-fluid">
         </div>
       </div>
     </div>

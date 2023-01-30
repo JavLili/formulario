@@ -1,0 +1,18 @@
+.space{
+    display: flex;
+    width: 10rem;
+}
+.centrado{
+    color: var(--primario);
+    margin-left: 0.5rem; 
+}
+.circulo{
+    margin-left: .5rem;
+    height: 1.8rem;
+    width: 1.8rem;
+    border-radius: 50%;
+    background-color: rgba(228, 20, 127, 0.144);
+}
+.icon{
+    width: 5rem;
+}
