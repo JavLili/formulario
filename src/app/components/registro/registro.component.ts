@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Persona } from '../../class/persona';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { PersonaService } from '../../services/persona.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro',
@@ -9,7 +10,7 @@ import { PersonaService } from '../../services/persona.service';
   styleUrls: ['./registro.component.css']
 })
 export class RegistroComponent implements OnInit{
-  
+
   submitted = false;
   register! : FormGroup;  
 
@@ -52,10 +53,40 @@ export class RegistroComponent implements OnInit{
     this.submitted=true
     
     if (this.register.invalid) {
-      console.log(this.register.value);
-      return
-    }
-    alert("Success")
+      Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'La información esta incompleta'
+        })
+        return
+      }
+      this.cargando()
+      this.correcto()
+  }
+
+  cargando(){
+    Swal.fire({
+      title: 'Validando',
+      html: 'Verificando la información',
+      timer: 3000,
+      timerProgressBar: true
+    }).then((result) => {
+      /* Read more about handling dismissals below */
+      if (result.dismiss === Swal.DismissReason.timer) {
+        console.log('I was closed by the timer')
+      }
+    })
+  }
+
+  correcto(){
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Información guardada',
+      showConfirmButton: false,
+      timer: 1500
+    })
+    console.log(this.register.value);
   }
 
   enviar(){
