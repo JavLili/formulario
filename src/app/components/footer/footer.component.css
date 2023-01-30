@@ -1,0 +1,10 @@
+.container-custom{
+    background-color: var(--primario);
+    padding: 2rem;
+}
+.text{
+    color: white;
+}
+.list{
+    padding-right: 2rem;
+}
