@@ -3,6 +3,7 @@ import { Persona } from '../../class/persona';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { PersonaService } from '../../services/persona.service';
 import Swal from 'sweetalert2';
+import { enviroment } from '../../environments/environment.prod';
 
 @Component({
   selector: 'app-registro',
@@ -49,6 +50,7 @@ export class RegistroComponent implements OnInit{
     })
   }
   onSubmit(){
+    console.log(enviroment.servidor);
     this.submitted=true
     
     if (this.register.invalid) {      
