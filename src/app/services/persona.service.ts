@@ -2,18 +2,19 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Persona } from '../class/persona';
 import { Observable } from 'rxjs';
+import { enviroment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PersonaService {
 
-  private baseURL="";
+  private baseURL=enviroment.servidor;
   
   constructor(private httpClient : HttpClient) { }
   
-  registrarCliente(persona:Persona): Observable<Object>{
-    return this.httpClient.post(`${this.baseURL+"/addPersona"}`,persona);
+  registrarCliente(): Observable<Object>{
+    return this.httpClient.get(`${this.baseURL+"api/api"}`);
   }
 
 

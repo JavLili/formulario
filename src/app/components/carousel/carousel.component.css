@@ -2,6 +2,7 @@
     width: 95%;
     margin: auto;
     overflow: hidden;
+    margin-left: 10px;
 }
 .sliderr ul {
     display: flex;
@@ -29,6 +30,6 @@
     100% {margin-left: -200%;}
 }
 .container__{
-    width: 45rem;
+    width: 50rem;
     height: 60rem;
 }
