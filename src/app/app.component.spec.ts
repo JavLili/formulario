@@ -1,16 +1,30 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { RegistroComponent } from './components/registro/registro.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { PersonaService } from './services/persona.service';
+import { HttpClient } from '@angular/common/http';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        HttpClientTestingModule,
+        BrowserModule,
+        ReactiveFormsModule,
+        FormsModule,
+        NavBarComponent,
+        RegistroComponent
       ],
       declarations: [
         AppComponent
       ],
+      providers:[HttpClient]
     }).compileComponents();
   });
 
